@@ -6,7 +6,7 @@ using WebShopInterface;
 using System.Windows.Forms;
 namespace WebStoreServer
 {
-    [Serializable]
+    //[Serializable]
 
     class CWebShop : MarshalByRefObject, IWebShop
     {
