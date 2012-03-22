@@ -22,11 +22,12 @@ namespace WebShopClient
         {
             InitializeComponent();
 
+
         }
 
         private void btn_getName_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(localWebShopProxy.GetWebshopName());
+            MessageBox.Show(localWebShopProxy.GetWebShopName());
         }
 
         private void btn_getInventory_Click(object sender, EventArgs e)
@@ -48,6 +49,12 @@ namespace WebShopClient
         {
             string address = "tcp://" + this.textBox1.Text + ":13101/shop";
             localWebShopProxy = (IWebShop)Activator.GetObject(typeof(IWebShop), address);
+            localWebShopProxy.event_product_sold += new WebShopDelegate(Webshopevents_handler);
         }
+        public void Webshopevents_handler(List<CProduct> productList)
+        {
+            MessageBox.Show("eventhandler called on client");
+        }
+
     }
 }

@@ -6,22 +6,42 @@ using System.Collections;
 
 namespace WebShopInterface
 {
-    public delegate void WebSHopDelegate(List<CProduct> product_list);
-    public class IWebShop
+    public delegate void WebShopDelegate(List<CProduct> productList);
+    public interface IWebShop
     {
-        event WebSHopDelegate event_product_sold;
+        event WebShopDelegate event_product_sold;
 
         string GetWebShopName();
         string GetProductList();
         string GetProductInfo(string ProductId);
         bool BuyProduct(string ProductId);
+
     }
 
     [Serializable]
     public class CProduct
     {
-        public string Ttile {get; set;}
-        public int Stock {get; set;}
+        public CProduct(string name, int price, int quantity)
+        {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+        public string name
+        {
+            get;
+            set;
+        }
+        public int price
+        {
+            get;
+            set;
+        }
+        public int quantity
+        {
+            get;
+            set;
+        }
     }
 
 }
