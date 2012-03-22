@@ -22,7 +22,7 @@ namespace WebShopClient
         {
             InitializeComponent();
 
-
+            RemotingConfiguration.Configure("WebShopClient.exe.config", false);
         }
 
         private void btn_getName_Click(object sender, EventArgs e)
